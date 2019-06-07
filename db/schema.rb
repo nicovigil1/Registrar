@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_07_015757) do
+ActiveRecord::Schema.define(version: 2019_06_07_021418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "participant_registries", force: :cascade do |t|
+    t.bigint "registry_id"
+    t.bigint "participant_id"
+    t.index ["participant_id"], name: "index_participant_registries_on_participant_id"
+    t.index ["registry_id"], name: "index_participant_registries_on_registry_id"
+  end
 
   create_table "participants", force: :cascade do |t|
     t.string "name"
@@ -36,6 +43,13 @@ ActiveRecord::Schema.define(version: 2019_06_07_015757) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_registries", force: :cascade do |t|
+    t.bigint "registry_id"
+    t.bigint "user_id"
+    t.index ["registry_id"], name: "index_user_registries_on_registry_id"
+    t.index ["user_id"], name: "index_user_registries_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "name"
@@ -44,4 +58,8 @@ ActiveRecord::Schema.define(version: 2019_06_07_015757) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "participant_registries", "participants"
+  add_foreign_key "participant_registries", "registries"
+  add_foreign_key "user_registries", "registries"
+  add_foreign_key "user_registries", "users"
 end
