@@ -11,5 +11,10 @@ RSpec.describe Participant, type: :model do
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:phone) }
   end
+
+  context "associations" do
+    it { should have_many(:participant_registries) }  
+    it { should have_many(:registries) }  
+  end
   
 end
