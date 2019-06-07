@@ -7,4 +7,7 @@ class Participant < ApplicationRecord
   validates_presence_of :contact_method
   validates_presence_of :email
   validates_presence_of :phone
+
+  has_many :participant_registries
+  has_many :registries, through: :participant_registries
 end
