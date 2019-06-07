@@ -5,4 +5,10 @@ class Registry < ApplicationRecord
 
   validates_presence_of :location
   validates_uniqueness_of :location
+
+  # Associations
+  has_many :user_registries
+  has_many :users, through: :user_registries
+  has_many :participant_registries
+  has_many :participants, through: :participant_registries
 end
