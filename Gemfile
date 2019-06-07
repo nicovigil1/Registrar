@@ -41,7 +41,6 @@ group :development, :test do
   gem 'pry'
   gem 'capybara'
   gem 'shoulda-matchers'
-  gem 'factory_bot'
 end
 
 group :development do
