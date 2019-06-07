@@ -2,6 +2,7 @@
   <h1>"Welcome to Registrar!"</h1>
   
   <section id="login">
+    <%= link_to 'Register', new_user_path %>
     <%= form_for :user do |f| %>
       <%= f.label :email, "Enter Email" %>
       <%= f.text_field :email %>
