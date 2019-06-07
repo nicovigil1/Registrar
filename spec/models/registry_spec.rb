@@ -13,4 +13,12 @@ RSpec.describe Registry, type: :model do
       expect(registry.open).to eq(false)
     end
   end
+
+  context "associations" do
+    it { should have_many(:participant_registries) } 
+    it { should have_many(:participants) } 
+    it { should have_many(:user_registries) } 
+    it { should have_many(:users) } 
+  end
+  
 end
