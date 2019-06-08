@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+    @user_registries = current_user.registries
   end
 
   def new
