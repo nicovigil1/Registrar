@@ -8,13 +8,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr><%= @registry.name %></tr>
-      <tr><%= @registry.location %></tr>
+      <td><%= @registry.name %></td>
+      <td><%= @registry.location %></td>
       <% if @registry.open %>
-        <tr> Open </tr>
+        <td> Open </td>
       <% else %>
-        <tr> Closed </tr>
+        <td> Closed </td>
       <% end %>
+      <td><%= link_to "Toggle Open Status", registry_path(@registry, toggle: true), method: :patch %></td>
     </tbody>
   </table>
 </section>
@@ -44,12 +45,14 @@
       <%= link_to "Add Participant", new_registry_participant_path(@registry) %>
       <table>
         <thead>
-          <tr>Name</tr>
-          <tr>Gender</tr>
-          <tr>Birthday</tr>
-          <tr>Contact Method</tr>
-          <tr>Email</tr>
-          <tr>Phone</tr>
+        <t>
+            <td>Name</td>
+            <td>Gender</td>
+            <td>Birthday</td>
+            <td>Contact Method</td>
+            <td>Email</td>
+            <td>Phone</td>
+        </tr>
         </thead>
         <tbody>
           <% user.find_enrolled(@registry).each do |participant| %>
