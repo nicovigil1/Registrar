@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post "/", to: "sessions#create"
 
   resources :users, only:[:show, :new, :create]
-  resources :registries, only: [:show] do
+  resources :registries, only: [:show, :update] do
     resources :participants, only: [:new, :create]
     resources :user_registries, only: [:new, :create, :destroy]
   end

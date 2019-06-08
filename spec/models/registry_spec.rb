@@ -9,7 +9,7 @@ RSpec.describe Registry, type: :model do
     it 'should have open status of registry default to false' do
       registry = Registry.new(name: "name", location: "chicago")
 
-      expect(registry.open).to eq(false)
+      expect(registry.open).to eq(true)
     end
   end
 
