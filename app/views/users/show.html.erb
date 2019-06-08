@@ -24,7 +24,7 @@
 
     <% @user_registries.each do |registry| %>
       <tr>
-        <th><%= registry.name %></th>
+        <th><%= link_to registry.name, registry_path(registry) %></th>
         <th><%= registry.location %></th>
       </tr>
     <% end %>
