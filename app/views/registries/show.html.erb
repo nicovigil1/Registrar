@@ -1,1 +1,45 @@
-hello world
+<section id="basic-info">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><%= @registry.name %></tr>
+      <tr><%= @registry.location %></tr>
+      <% if @registry.open %>
+        <tr> Open </tr>
+      <% else %>
+        <tr> Closed </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+<section id="participants">
+  <table>
+    <thead>
+      <tr>Name</tr>
+      <tr>Gender</tr>
+      <tr>Birthday</tr>
+      <tr>Contact Method</tr>
+      <tr>Email</tr>
+      <tr>Phone</tr>
+    </thead>
+    <tbody>
+      <% @participants.each do |participant| %>
+        <tr id=<%= "participant-#{participant.id}" %>>
+          <td><%= link_to participant.name, participant_path(participant) %></td>
+          <td><%= participant.gender %></td>
+          <td><%= participant.birthday %></td>
+          <td><%= participant.contact_method %></td>
+          <td><%= participant.email %></td>
+          <td><%= participant.phone %></td>
+          <td><%= participant.enrolled_at.to_date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>

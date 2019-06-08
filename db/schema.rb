@@ -18,7 +18,8 @@ ActiveRecord::Schema.define(version: 2019_06_07_021418) do
   create_table "participant_registries", force: :cascade do |t|
     t.bigint "registry_id"
     t.bigint "participant_id"
-    t.date "enrollment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["participant_id"], name: "index_participant_registries_on_participant_id"
     t.index ["registry_id"], name: "index_participant_registries_on_registry_id"
   end
