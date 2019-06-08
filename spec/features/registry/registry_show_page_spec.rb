@@ -73,10 +73,10 @@ describe "The Registry Show Page" do
         click_on("Add Participant")
       end 
 
-      expect(current_path).to eq(new_participant_path)
+      expect(current_path).to eq(new_registry_participant_path(reg1))
     end 
 
-    xit 'has a link to remove a participant from the registry' do 
+    it 'has a link to remove a participant from the registry' do 
       user = User.create(email: "email@email.com", phone: "8675309", name: "Delta Dawn")
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)  
 
