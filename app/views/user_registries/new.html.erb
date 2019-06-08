@@ -1,0 +1,18 @@
+  <table>
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Phone</td>
+        <td>Email</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.name, registry_user_registries_path(@registry, email: user.email), method: :post %></td>
+          <td><%= user.phone %></td>
+          <td><%= user.email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

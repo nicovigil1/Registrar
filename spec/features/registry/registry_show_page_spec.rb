@@ -94,4 +94,70 @@ describe "The Registry Show Page" do
       end 
     end 
   end
+
+  context "Coordinators" do
+    it 'should be able to see all coordinators in a registry' do
+      user = User.create(email: "email@email.com", phone: "8675309", name: "Delta Dawn")
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)  
+
+      reg1 = user.registries.create(name: 'reg1', location: 'Chicago')
+      user2 = reg1.users.create(email: "email2@email.com", phone: "86753092", name: "Elton John")
+
+      visit registry_path(reg1)
+
+      within "#users" do
+        expect(page).to have_content(user2.name)
+        expect(page).to have_content(user2.phone)
+        expect(page).to have_content(user2.email)
+      end
+    end  
+
+    it 'should be able to add coordinators to a registry' do
+      user = User.create(email: "email@email.com", phone: "8675309", name: "Delta Dawn")
+      user2 = User.create(email: "email2@email.com", phone: "86753092", name: "Elton John")
+      user3 = User.create(email: "email3@email.com", phone: "86753093", name: "Billy Joel")
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)  
+
+      reg1 = user.registries.create(name: 'reg1', location: 'Chicago')
+
+      visit registry_path(reg1)
+
+      within "#users" do
+        expect(page).to have_link("Add Coordinator")
+        click_link("Add Coordinator")
+      end
+
+      expect(page).to have_link(user2.name) 
+      expect(page).to have_link(user3.name) 
+
+      click_link(user2.name)
+
+      within "#users" do
+        expect(page).to have_content(user2.name)
+        expect(page).to have_content(user2.phone)
+        expect(page).to have_content(user2.email)
+      end
+    end
+
+    it 'should be able to remove coordinators from a registry' do 
+      user = User.create(email: "email@email.com", phone: "8675309", name: "Delta Dawn")
+      user3 = User.create(email: "email3@email.com", phone: "86753093", name: "Billy Joel")
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)  
+
+      reg1 = user.registries.create(name: 'reg1', location: 'Chicago')
+      user2 = reg1.users.create(email: "email2@email.com", phone: "86753092", name: "Elton John")
+
+      visit registry_path(reg1)
+
+      within "#user-#{user2.id}" do
+        expect(page).to have_link("Remove Coordinator")
+        click_link("Remove Coordinator")
+      end
+
+      expect(page).to_not have_content(user2.name)
+      expect(page).to_not have_content(user2.phone)
+      expect(page).to_not have_content(user2.email)
+    end 
+  end
+  
 end
