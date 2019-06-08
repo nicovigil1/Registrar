@@ -12,4 +12,7 @@ class Participant < ApplicationRecord
   # Associations
   has_many :participant_registries
   has_many :registries, through: :participant_registries
+
+  # Enums
+  enum contact_method: {Phone: 0, Email: 1}
 end
