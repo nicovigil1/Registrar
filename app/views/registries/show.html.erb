@@ -18,6 +18,31 @@
     </tbody>
   </table>
 </section>
+
+<section id="users">
+  <h2>Coordinators</h2>
+  <%= link_to 'Add Coordinator', new_registry_user_registry_path(@registry) %>
+  <table>
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Phone</td>
+        <td>Email</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr id=<%= "user-#{user.id}" %>>
+          <td><%= user.name %></td>
+          <td><%= user.phone %></td>
+          <td><%= user.email %></td>
+          <td><%= link_to "Remove Coordinator", registry_user_registry_path(@registry, user_id: user.id), method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+
 <section id="participants">
   <%= link_to "Add Participant", new_registry_participant_path(@registry) %>
   <table>
