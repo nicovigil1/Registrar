@@ -4,7 +4,6 @@ class Registry < ApplicationRecord
   validates_uniqueness_of :name
 
   validates_presence_of :location
-  validates_uniqueness_of :location
 
   # Associations
   has_many :user_registries
