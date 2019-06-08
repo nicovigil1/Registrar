@@ -12,6 +12,7 @@ class Participant < ApplicationRecord
   # Associations
   has_many :participant_registries, dependent: :destroy
   has_many :registries, through: :participant_registries
+  belongs_to :user
 
   # Enums
   enum contact_method: {Phone: 0, Email: 1}

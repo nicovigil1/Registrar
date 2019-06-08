@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_07_021418) do
+ActiveRecord::Schema.define(version: 2019_06_08_152301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 2019_06_07_021418) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
   create_table "registries", force: :cascade do |t|
@@ -61,6 +63,7 @@ ActiveRecord::Schema.define(version: 2019_06_07_021418) do
 
   add_foreign_key "participant_registries", "participants"
   add_foreign_key "participant_registries", "registries"
+  add_foreign_key "participants", "users"
   add_foreign_key "user_registries", "registries"
   add_foreign_key "user_registries", "users"
 end

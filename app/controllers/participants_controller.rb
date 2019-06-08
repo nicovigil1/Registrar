@@ -31,7 +31,8 @@ class ParticipantsController < ApplicationController
   private
 
   def participant_params
-    params.require(:participant).permit(:name, :gender, :birthday, :contact_method, :email, :phone, :notes)
+    user_info = {user_id: current_user.id}
+    params.require(:participant).permit(:name, :gender, :birthday, :contact_method, :email, :phone, :notes).merge(user_info)
   end
 
 end

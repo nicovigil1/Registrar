@@ -12,5 +12,10 @@ class User < ApplicationRecord
   # Associations
   has_many :user_registries
   has_many :registries, through: :user_registries
-  
+  has_many :participants
+
+  def find_enrolled(registry)
+    #fixme - better to have a GROUP BY in the controller
+    registry.participants.select("participants.*, participant_registries.created_at AS enrolled_at").where(user: self)
+  end
 end
