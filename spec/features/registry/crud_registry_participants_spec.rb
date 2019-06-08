@@ -21,7 +21,7 @@ describe "A user" do
       fill_in "Phone",	with: "8675309" 
 
       click_on "Submit"
-
+      
       expect(current_path).to eq(registry_path(reg1)) 
       expect(page).to have_content("Name1")
       expect(page).to have_content("Male")
@@ -39,16 +39,15 @@ describe "A user" do
 
       b_day = Date.new(1970, 1, 1)
       participant = reg1.participants.create(name: "Billy Joel", gender: "male", birthday: b_day, 
-                                            contact_method: 0, email: "email@email.com", phone: "8675309")
+                                            contact_method: 0, email: "email@email.com", phone: "8675309", user: user)
 
       visit registry_path(reg1)
-
+      
       within "#participant-#{participant.id}" do 
         expect(page).to have_link("Remove Participant") 
         click_on("Remove Participant")
       end 
 
-      
       expect(current_path).to eq(registry_path(reg1)) 
       expect(page).to_not have_content(participant.id) 
     end

@@ -25,7 +25,7 @@ describe "The Registry Show Page" do
 
       b_day = Date.parse('2016-08-20')
 
-      participant = reg1.participants.create(name: "Billy Joel", gender: "male", birthday: b_day, contact_method: 0, email: "email@email.com", phone: "8675309")
+      participant = reg1.participants.create(name: "Billy Joel", gender: "male", birthday: b_day, contact_method: 0, email: "email@email.com", phone: "8675309", user: user)
 
       visit registry_path(reg1)
       
@@ -48,7 +48,7 @@ describe "The Registry Show Page" do
 
       b_day = Date.new(1970, 1, 1)
       participant = reg1.participants.create(name: "Billy Joel", gender: "male", birthday: b_day, 
-                                            contact_method: 0, email: "email@email.com", phone: "8675309")
+                                            contact_method: 0, email: "email@email.com", phone: "8675309", user: user)
       
       visit registry_path(reg1)
 
@@ -85,7 +85,7 @@ describe "The Registry Show Page" do
       
       b_day = Date.new(1970, 1, 1)
       participant = reg1.participants.create(name: "Billy Joel", gender: "male", birthday: b_day, 
-                                            contact_method: 0, email: "email@email.com", phone: "8675309")
+                                            contact_method: 0, email: "email@email.com", phone: "8675309", user: user)
 
       visit registry_path(reg1)
 
