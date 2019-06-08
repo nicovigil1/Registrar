@@ -1,0 +1,21 @@
+<h1>Add a Participant</h1>
+
+<%= form_for [@registry, @participant] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :gender %>
+  <%# taken from Human rights campaign ('hrc.org') %>
+  <%= f.select(:gender, [['Female','Female'], ['Male', 'Male'], ['Non-Binary/3rd Gender', 'Non-Binary/3rd Gender']]) %>
+  <%= f.label :birthday %>
+  <%= f.date_field :birthday %>
+  <%= f.label :contact_method %>
+  <%= f.select(:contact_method, [['Phone', 'Phone'], ['Email', 'Email']]) %>
+  <%= f.label :email, "Email Address" %>
+  <%= f.text_field :email %>
+  <%= f.label :phone, "Phone Number"%>
+  <%= f.text_field :phone %>
+  <%= f.label :notes %>
+  <%= f.text_area :notes %>
+
+  <%= f.submit "Submit"%>
+<% end %>
