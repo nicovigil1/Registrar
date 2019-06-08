@@ -38,10 +38,12 @@ describe "User Dashboard" do
     end 
   end 
 
-  xit 'has the name of each User Registry as a link' do
+  it 'has the name of each User Registry as a link' do
     user = User.create(email: "email@email.com", phone: "8675309", name: "Delta Dawn")
-    reg1 = Registry.create(name: 'reg1', location: 'chicago', user: user)
-    reg2 = Registry.create(name: 'reg2', location: 'chicago', user: user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)  
+
+    reg1 = user.registries.create(name: 'reg1', location: 'Chicago')
+    reg2 = user.registries.create(name: 'reg2', location: 'Denver')
     
     visit user_path(user)
 
@@ -51,6 +53,6 @@ describe "User Dashboard" do
       click_on(reg1.name)
     end
 
-    expect(page).to eq(registry_path(reg1))
+    expect(current_path).to eq(registry_path(reg1))
   end 
 end
