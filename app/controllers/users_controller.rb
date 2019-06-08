@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user_registries = current_user.registries
+    @count_by_birth_year = Participant.count_by_birth_year
   end
 
   def new

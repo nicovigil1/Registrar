@@ -10,6 +10,14 @@
   </head>
 
   <body>
+    <nav>
+      <ul>
+        <% if current_user %>
+          <li><%= link_to 'Dashboard', user_path(current_user) %></li>
+        <% end %>
+        <%# <li><%= link_to 'Registries', registries_path </li> %>
+      </ul>
+    </nav>
     <% if flash[:errors] %>
         <p><%= flash[:errors] if flash[:errors]%></p>
     <% end %>

@@ -16,6 +16,9 @@
 </section>
 
 <section>
+  <h3><%= "Your Registries" %></h3>
+  <%= link_to 'Create Registry', new_registry_path %>
+
   <table id="user-registries">
     <tr>
       <th>Name</th>
@@ -30,4 +33,13 @@
     <% end %>
 
   </table>
+</section>
+
+<section>
+  <h3>Business Logic</h3>
+
+  <h4>Count of participants by Birth Year</h4>
+  <% @count_by_birth_year.each do |year, count| %>
+    <p><%= "#{year} - #{count}" %></p>
+  <% end %>
 </section>

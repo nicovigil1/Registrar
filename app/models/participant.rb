@@ -16,4 +16,14 @@ class Participant < ApplicationRecord
 
   # Enums
   enum contact_method: {Phone: 0, Email: 1}
+
+  def self.count_by_birth_year
+    ans = Participant.group("DATE_TRUNC('year', birthday)").count
+    new_hash = {}
+    ans.map do |year, count|
+      new_year = year.to_date.year
+      new_hash[new_year] = count
+    end
+    new_hash
+  end
 end
