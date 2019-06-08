@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   post "/", to: "sessions#create"
 
   resources :users, only:[:show, :new, :create]
+  resources :registries, only: [:show]
 end

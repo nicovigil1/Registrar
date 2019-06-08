@@ -1,1 +1,33 @@
-Hello world
+<h1>Welcome, <%= current_user.name %></h1>
+
+<section id="user-info">
+  <p>Basic Info</p>
+  <table>
+    <tr>
+      <th>Phone Number</th>
+      <th>Email Address</th>
+    </tr>
+
+    <tr>
+      <td><%= current_user.phone %></td>
+      <td><%= current_user.email %></td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <table id="user-registries">
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+    </tr>
+
+    <% @user_registries.each do |registry| %>
+      <tr>
+        <th><%= link_to registry.name, registry_path(registry) %></th>
+        <th><%= registry.location %></th>
+      </tr>
+    <% end %>
+
+  </table>
+</section>
