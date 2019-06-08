@@ -10,7 +10,7 @@ class Participant < ApplicationRecord
   validates_presence_of :phone
 
   # Associations
-  has_many :participant_registries
+  has_many :participant_registries, dependent: :destroy
   has_many :registries, through: :participant_registries
 
   # Enums
