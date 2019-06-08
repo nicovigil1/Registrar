@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_06_08_152301) do
   create_table "registries", force: :cascade do |t|
     t.string "name"
     t.string "location"
-    t.boolean "open", default: false
+    t.boolean "open", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
